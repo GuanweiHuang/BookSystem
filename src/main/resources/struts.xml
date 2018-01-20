@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+
+    <!-- 设置系统参数 -->
+    <constant name="struts.devMode" value="true"/>
+    <constant name="struts.ui.theme" value="simple"/>
+    <constant name="struts.action.extension" value="action,do,,"/>
+    <!-- 加载资源文件 -->
+    <constant name="struts.custom.i18n.resources" value="lable"/>
+    <!-- 设定默认地区语种 -->
+    <constant name="struts.locale" value="zh_CN"/>
+
+    <!-- 设置Action -->
+    <package name="com.book" extends="json-default">
+
+        <interceptors>
+            <interceptor name="loginInterceptor" class="com.book.utils.LoginInterceptor"/>
+            <interceptor-stack name="myLoginStack">
+                <interceptor-ref name="loginInterceptor">
+                    <param name="excludeMethods">doLogin</param>
+                </interceptor-ref>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+        </interceptors>
+
+        <global-results>
+            <result name="input">${pageContext.request.contextPath}/index.jsp</result>
+            <result name="login">${pageContext.request.contextPath}/index.jsp</result>
+        </global-results>
+
+        <global-allowed-methods>regex:.*</global-allowed-methods>
+
+        <action name="userAction_*" method="{1}" class="userAction">
+            <result name="input">/index.jsp</result>
+            <result name="doLogin" type="redirect">/pages/showPages/main.jsp</result>
+            <result name="addUser" type="redirect">/pages/addPages/addUser.jsp?msg=${msg}</result>
+            <result name="addUserTwo" type="redirect">/pages/addPages/addUser.jsp</result>
+
+
+            <result name="findUsersList">/pages/showPages/usersList.jsp</result>
+            <result name="findInvalidUsersList">/pages/showPages/usersInvalidList.jsp</result>
+            <result name="toUpdateUser">/pages/updatePages/updateUser.jsp</result>
+            <result name="doUpdateUser" type="redirect">userAction_findUsersList?msg=${msg}&amp;&amp;uno=${uno}</result>
+            <result name="updatePwd1" type="redirect">userAction_findUsersList?msg=${msg}</result>
+            <result name="toUserPage">/pages/showPages/userShow.jsp</result>
+            <result name="deleteUser1" type="redirect">userAction_findUsersList?msg=${msg}</result>
+
+
+            <result name="findUsersList2">/pages/showPages/usersList2.jsp</result>
+            <result name="toUpdateUser2">/pages/updatePages/updateUser2.jsp</result>
+            <result name="doUpdateUser2" type="redirect">userAction_findUsersList2?msg=${msg}&amp;&amp;uno=${uno}</result>
+            <result name="updatePwd2" type="redirect">userAction_findUsersList2?msg=${msg}</result>
+            <result name="toUserPage2">/pages/showPages/userShow2.jsp</result>
+            <result name="deleteUser2" type="redirect">userAction_findUsersList2?msg=${msg}</result>
+
+
+            <result name="toUpdateUserPer">/pages/updatePages/updatePer.jsp</result>
+            <result name="doUpdateUserPer" type="redirect">userAction_toUpdateUserPer?user.uno=${uno}&amp;&amp;msg=${msg}</result>
+
+            <result name="toUpdateUserPwd">/pages/updatePages/updatePwd.jsp</result>
+            <result name="doUpdateUserPwd" type="redirect">userAction_toUpdateUserPwd?user.uno=${uno}&amp;&amp;msg=${msg}</result>
+
+
+            <interceptor-ref name="myLoginStack" />
+        </action>
+
+        <action name="btypeAction_*" method="{1}" class="btypeAction">
+            <result name="findBtypeList">/pages/showPages/btypeList.jsp</result>
+            <result name="addBtype" type="redirect">/pages/addPages/addBtype.jsp?msg=${msg}</result>
+            <result name="toUpdateBtype">/pages/updatePages/updateBtype.jsp</result>
+            <result name="doUpdateBtype" type="redirect">btypeAction_findBtypeList?msg=${msg}&amp;&amp;btno=${btno}</result>
+            <result name="deleteBtype" type="redirect">btypeAction_findBtypeList?msg=${msg}</result>
+
+
+            <interceptor-ref name="myLoginStack" />
+        </action>
+
+        <action name="bookAction_*" method="{1}" class="bookAction">
+            <result name="findBookList">/pages/showPages/bookList.jsp</result>
+            <result name="findBtypeList" type="json">
+                <param name="includeProperties">btypeList.*</param>
+            </result>
+            <result name="addBook" type="redirect">/pages/addPages/addBook.jsp?msg=${msg}</result>
+
+            <result name="toUpdateBook">/pages/updatePages/updateBook.jsp</result>
+            <result name="doUpdateBook" type="redirect">bookAction_findBookList?msg=${msg}&amp;&amp;bid=${bid}</result>
+
+
+            <result name="deleteBook" type="redirect">bookAction_findBookList?msg=${msg}</result>
+
+
+            <result name="findBookStatus1">/pages/showPages/loan_and_buy.jsp</result>
+            <result name="load_and_buy_Book" type="redirect">bookAction_findBookStatus1?msg=${msg}</result>
+
+            <result name="findBookStatus2">/pages/showPages/returnBook.jsp</result>
+            <result name="returnBook" type="redirect">bookAction_findBookStatus2?msg=${msg}</result>
+
+            <result name="findBookStatus3">/pages/showPages/buyBook.jsp</result>
+
+
+            <interceptor-ref name="myLoginStack" />
+        </action>
+
+        <action name="readerAction_*" method="{1}" class="readerAction">
+            <result name="addReader" type="redirect">/pages/addPages/addReader.jsp?msg=${msg}</result>
+
+            <result name="findReadersList">/pages/showPages/readersList.jsp</result>
+
+            <result name="toUpdateReader">/pages/updatePages/updateReader.jsp</result>
+            <result name="updateReader" type="redirect">readerAction_findReadersList?msg=${msg}&amp;&amp;rno=${rno}</result>
+
+            <result name="deleteReader"  type="redirect">readerAction_findReadersList?msg=${msg}</result>
+
+            <result name="findReadersList2" type="json">
+                <param name="includeProperties">readersList.*</param>
+            </result>
+            <result name="findReaderVague2" type="json">
+                <param name="includeProperties">readersList.*</param>
+            </result>
+
+            <result name="toUpdateReader2">/pages/updatePages/updateReader2.jsp</result>
+            <result name="updateReader2" type="redirect">/pages/showPages/readersList2.jsp?msg=${msg}&amp;&amp;rno=${rno}</result>
+
+
+            <interceptor-ref name="myLoginStack" />
+        </action>
+
+
+    </package>
+
+</struts>
