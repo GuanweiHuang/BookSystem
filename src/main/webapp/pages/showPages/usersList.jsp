@@ -44,6 +44,11 @@
             float: left;
         }
 
+        td{
+            text-align: center;
+            min-width: 100px;
+        }
+
         a{
             color: blue;
             outline:none; /*去掉点击超链接以后出现的蓝色小框*/
@@ -205,83 +210,85 @@
         </script>
     </s:elseif>
 
-    <div class="table">
-        <div>
-            <div class="table_title">编号</div>
-            <div class="table_title" style="border-left: 0px;">账号</div>
-            <div class="table_title" style="border-left: 0px;">密码</div>
-            <div class="table_title" style="border-left: 0px;">状态</div>
-            <div class="table_title" style="border-left: 0px;">类型</div>
-            <div class="table_title" style="border-left: 0px; width: 330px;">管理</div>
-        </div>
+    <%--<div class="table">--%>
+        <%--<div>--%>
+            <%--<div class="table_title">编号</div>--%>
+            <%--<div class="table_title" style="border-left: 0px;">账号</div>--%>
+            <%--<div class="table_title" style="border-left: 0px;">密码</div>--%>
+            <%--<div class="table_title" style="border-left: 0px;">状态</div>--%>
+            <%--<div class="table_title" style="border-left: 0px;">类型</div>--%>
+            <%--<div class="table_title" style="border-left: 0px; width: 330px;">管理</div>--%>
+        <%--</div>--%>
 
-        <div>
-        <s:iterator value="#request.usersList" var="u" status="ids">
-            <div class="table_body" style="border-top: 0px">${ids.count}</div>
-            <div class="table_body" style="border-top: 0px; border-left: 0px;">${u.uname}</div>
-            <div class="table_body" style="border-top: 0px; border-left: 0px;">${u.upwd.toString().substring(0,1)}***</div>
-            <div class="table_body" style="border-top: 0px; border-left: 0px;">${u.ustatus==1?"正常":"销户"}</div>
-            <div class="table_body" style="border-top: 0px; border-left: 0px;">
-                    ${u.utype==1?"超级管理员":""}
-                    ${u.utype==2?"管理员":""}
-                    ${u.utype==3?"普通员工":""}
-            </div>
-            <div class="table_body" style="border-top: 0px; border-left: 0px; width: 330px">
-                <input type="hidden" value="${u.uno}"/>
-                <s:if test="%{#request.u.utype==1}">
-                    <a href="${pageContext.request.contextPath}/userAction_toUserPage?user.uno=${u.uno}">详情</a>
-                </s:if>
-                <s:elseif test="%{#request.u.utype!=1}">
-                    <a href="${pageContext.request.contextPath}/userAction_toUserPage?user.uno=${u.uno}">详情</a>
-                    &nbsp;|&nbsp;
-                    <a href="${pageContext.request.contextPath}/userAction_toUpdateUser?user.uno=${u.uno}">修改用户信息</a>
-                    &nbsp;|&nbsp;
-                    <a href="javascript:;" onclick="resetPwd(this)">重置密码</a>
-                    &nbsp;|&nbsp;
-                    <a href="javascript:;" onclick="deleteUser(this)">注销</a>
-                </s:elseif>
-            </div>
-        </s:iterator>
-        </div>
-    </div>
-    <%--<table border="1" width="600">--%>
-        <%--<tr>--%>
-            <%--<td>编号</td>--%>
-            <%--<td>账号</td>--%>
-            <%--<td>密码</td>--%>
-            <%--<td>状态</td>--%>
-            <%--<td>类型</td>--%>
-            <%--<td>管理</td>--%>
-        <%--</tr>--%>
+        <%--<div>--%>
         <%--<s:iterator value="#request.usersList" var="u" status="ids">--%>
-            <%--<tr>--%>
-                <%--<td>${ids.count}</td>--%>
-                <%--<td>${u.uname}</td>--%>
-                <%--<td>${u.upwd.toString().substring(0,1)}***</td>--%>
-                <%--<td>${u.ustatus==1?"正常":"销户"}</td>--%>
-                <%--<td>--%>
-                        <%--${u.utype==1?"超级管理员":""}--%>
-                        <%--${u.utype==2?"管理员":""}--%>
-                        <%--${u.utype==3?"普通员工":""}--%>
-                <%--</td>--%>
-                <%--<td>--%>
-                        <%--<input type="hidden" value="${u.uno}"/>--%>
-                        <%--<s:if test="%{#request.u.utype==1}">--%>
-                            <%--<a href="#">详情</a>--%>
-                        <%--</s:if>--%>
-                        <%--<s:elseif test="%{#request.u.utype!=1}">--%>
-                            <%--<a href="#">详情</a>--%>
-                            <%--&nbsp;|&nbsp;--%>
-                            <%--<a href="${pageContext.request.contextPath}/userAction_toUpdateUser?user.uno=${u.uno}">修改用户信息</a>--%>
-                            <%--&nbsp;|&nbsp;--%>
-                            <%--<a href="javascript:;" onclick="resetPwd(this)">重置密码</a>--%>
-                            <%--&nbsp;|&nbsp;--%>
-                            <%--<a href="#">注销</a>--%>
-                        <%--</s:elseif>--%>
-                <%--</td>--%>
-            <%--</tr>--%>
+            <%--<div class="table_body" style="border-top: 0px">${ids.count}</div>--%>
+            <%--<div class="table_body" style="border-top: 0px; border-left: 0px;">${u.uname}</div>--%>
+            <%--<div class="table_body" style="border-top: 0px; border-left: 0px;">${u.upwd.toString().substring(0,1)}***</div>--%>
+            <%--<div class="table_body" style="border-top: 0px; border-left: 0px;">${u.ustatus==1?"正常":"销户"}</div>--%>
+            <%--<div class="table_body" style="border-top: 0px; border-left: 0px;">--%>
+                    <%--${u.utype==1?"超级管理员":""}--%>
+                    <%--${u.utype==2?"管理员":""}--%>
+                    <%--${u.utype==3?"普通员工":""}--%>
+            <%--</div>--%>
+            <%--<div class="table_body" style="border-top: 0px; border-left: 0px; width: 330px">--%>
+                <%--<input type="hidden" value="${u.uno}"/>--%>
+                <%--<s:if test="%{#request.u.utype==1}">--%>
+                    <%--<a href="${pageContext.request.contextPath}/userAction_toUserPage?user.uno=${u.uno}">详情</a>--%>
+                <%--</s:if>--%>
+                <%--<s:elseif test="%{#request.u.utype!=1}">--%>
+                    <%--<a href="${pageContext.request.contextPath}/userAction_toUserPage?user.uno=${u.uno}">详情</a>--%>
+                    <%--&nbsp;|&nbsp;--%>
+                    <%--<a href="${pageContext.request.contextPath}/userAction_toUpdateUser?user.uno=${u.uno}">修改用户信息</a>--%>
+                    <%--&nbsp;|&nbsp;--%>
+                    <%--<a href="javascript:;" onclick="resetPwd(this)">重置密码</a>--%>
+                    <%--&nbsp;|&nbsp;--%>
+                    <%--<a href="javascript:;" onclick="deleteUser(this)">注销</a>--%>
+                <%--</s:elseif>--%>
+            <%--</div>--%>
         <%--</s:iterator>--%>
-    <%--</table>--%>
+        <%--</div>--%>
+    <%--</div>--%>
+
+
+    <table border="1" style="min-width: 850px;">
+        <tr>
+            <td>编号</td>
+            <td>账号</td>
+            <td>密码</td>
+            <td>状态</td>
+            <td>类型</td>
+            <td>管理</td>
+        </tr>
+        <s:iterator value="#request.usersList" var="u" status="ids">
+            <tr>
+                <td>${ids.count}</td>
+                <td>${u.uname}</td>
+                <td>${u.upwd.toString().substring(0,1)}***</td>
+                <td>${u.ustatus==1?"正常":"销户"}</td>
+                <td>
+                        ${u.utype==1?"超级管理员":""}
+                        ${u.utype==2?"管理员":""}
+                        ${u.utype==3?"普通员工":""}
+                </td>
+                <td>
+                    <input type="hidden" value="${u.uno}"/>
+                    <s:if test="%{#request.u.utype==1}">
+                        <a href="${pageContext.request.contextPath}/userAction_toUserPage?user.uno=${u.uno}">详情</a>
+                    </s:if>
+                    <s:elseif test="%{#request.u.utype!=1}">
+                        <a href="${pageContext.request.contextPath}/userAction_toUserPage?user.uno=${u.uno}">详情</a>
+                        &nbsp;|&nbsp;
+                        <a href="${pageContext.request.contextPath}/userAction_toUpdateUser?user.uno=${u.uno}">修改用户信息</a>
+                        &nbsp;|&nbsp;
+                        <a href="javascript:;" onclick="resetPwd(this)">重置密码</a>
+                        &nbsp;|&nbsp;
+                        <a href="javascript:;" onclick="deleteUser(this)">注销</a>
+                    </s:elseif>
+                </td>
+            </tr>
+        </s:iterator>
+    </table>
 </body>
 <script type="text/javascript">
     function resetPwd(ob) {
@@ -305,11 +312,16 @@
     }
 
     function deleteUser(ob) {
+        //获取隐藏input的值，即该行信息的id
         var $val = $(ob).parent().find("input");
         var theValue = $($val.get(0)).val();
+
+        //获取用户名
+        var $text = $(ob).parent().parent().find("td");
+        var theText = $($text.get(1)).text();
 //        alert(theValue);
 
-        if (confirm('该用户将会被注销')){
+        if (confirm('用户 "'+theText+'" 将会被注销')){
             location.href="${pageContext.request.contextPath}/userAction_deleteUser1?user.uno="+theValue;
             return true;
         }else {
