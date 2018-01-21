@@ -114,6 +114,8 @@
 
 <script type="text/javascript">
 
+    javascript :window.history.forward(0);
+
     var _menus = {"menus":[
         <s:if test="#session.LoginUser.utype==1">
         {"menuid":"1","icon":"icon-sys","menuname":"&nbsp;用户设置",
