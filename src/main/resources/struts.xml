@@ -36,7 +36,7 @@
         <global-allowed-methods>regex:.*</global-allowed-methods>
 
         <action name="userAction_*" method="{1}" class="userAction">
-            <result name="input">/index.jsp</result>
+            <result name="input">/index.jsp?</result>
             <result name="doLogin" type="redirect">/pages/showPages/main.jsp</result>
             <result name="addUser" type="redirect">/pages/addPages/addUser.jsp?msg=${msg}</result>
             <result name="addUserTwo" type="redirect">/pages/addPages/addUser.jsp</result>

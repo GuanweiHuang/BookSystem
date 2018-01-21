@@ -17,7 +17,9 @@ public class LoginFilter implements Filter {
 	public void destroy() {
 	}
 
-	private String allowPath = "/index.jsp,/js/jquery-1.7.2.min.js,/js/jquery-1.7.2.min.js,userAction_doLogin.action";
+	private String allowPath = "/index.jsp,/css/bootstrap.css," +
+			"/iconfont/style.css,/images/main_bg.png,/images/bg.jpg" +
+			"/js/jquery-1.7.2.min.js,userAction_doLogin.action";
 	
 	public void doFilter(ServletRequest arg0, ServletResponse arg1, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest)arg0;
