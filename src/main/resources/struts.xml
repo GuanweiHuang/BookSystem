@@ -39,6 +39,7 @@
             <result name="input">/index.jsp?</result>
             <result name="doLogin" type="redirect">/pages/showPages/main.jsp</result>
             <result name="addUser" type="redirect">/pages/addPages/addUser.jsp?msg=${msg}</result>
+            <result name="addUser2" type="redirect">/pages/addPages/addUser2.jsp?msg=${msg}</result>
             <result name="addUserTwo" type="redirect">/pages/addPages/addUser.jsp</result>
 
 

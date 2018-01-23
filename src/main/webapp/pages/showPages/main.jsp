@@ -131,8 +131,8 @@
         <s:elseif test="#session.LoginUser.utype==2">
         {"menuid":"1","icon":"icon-sys","menuname":"&nbsp;用户设置",
             "menus":[
-                {"menuname":"查询用户","icon":"icon-add","url":"${pageContext.request.contextPath}/userAction_findUsersList2"},
-                {"menuname":"添加用户","icon":"icon-users","url":"${pageContext.request.contextPath}/pages/addPages/addUser.jsp"}
+                {"menuname":"查询用户","icon":"icon-add","url":"${pageContext.request.contextPath}/userAct    findUsersList2"},
+                {"menuname":"添加用户","icon":"icon-users","url":"${pageContext.request.contextPath}/pages/addPages/addUser2.jsp"}
             ]
         },
         </s:elseif>

@@ -61,6 +61,20 @@ public class UserAction extends ActionSupport {
         return "addUser";
     }
 
+    public String addUser2(){
+        Users users = usersService.checkUname(user);
+        if (users==null){
+            if (usersService.addUser(user)){
+                msg=1;
+            }else {
+                msg=-1;
+            }
+        }else {
+            msg=0;
+        }
+        return "addUser2";
+    }
+
     //超级管理员查询所有用户
     public String findUsersList(){
         List usersList=usersService.findUsersList();
