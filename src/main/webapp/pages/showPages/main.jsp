@@ -140,7 +140,7 @@
             "menus":[
                 {"menuname":"出租或出售","icon":"icon-nav","url":"${pageContext.request.contextPath}/bookAction_findBookStatus1"},
                 {"menuname":"归还图书","icon":"icon-nav","url":"${pageContext.request.contextPath}/bookAction_findBookStatus2"},
-                {"menuname":"已售出图书","icon":"icon-nav","url":"${pageContext.request.contextPath}/bookAction_findBookStatus3"},
+                {"menuname":"已售出(赔偿)图书","icon":"icon-nav","url":"${pageContext.request.contextPath}/bookAction_findBookStatus3"},
                 {"menuname":"查询图书","icon":"icon-nav","url":"${pageContext.request.contextPath}/bookAction_findBookList"},
                 {"menuname":"添加图书","icon":"icon-nav","url":"${pageContext.request.contextPath}/pages/addPages/addBook.jsp"},
                 {"menuname":"查询书籍类型","icon":"icon-nav","url":"${pageContext.request.contextPath}/btypeAction_findBtypeList"},

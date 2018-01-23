@@ -4,7 +4,7 @@
   Date: 2018/1/18
   Time: 8:21
   To change this template use File | Settings | File Templates.
-  查询出状态为已出售的书籍
+  查询出状态为已出售(已赔偿)(已损坏)的书籍
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="s" uri="/struts-tags" %>
@@ -61,7 +61,7 @@
             <td>
                     ${b.bstatus==1?"正常":""}
                     ${b.bstatus==2?"已出租":""}
-                    ${b.bstatus==3?"已出售":""}
+                    ${b.bstatus==3?"已出售(已赔偿)":""}
             </td>
             <td>${b.bindate.toString().substring(0,10)}</td>
         </tr>

@@ -193,7 +193,7 @@
                 <td>
                     ${b[0].bstatus==1?"正常":""}
                     ${b[0].bstatus==2?"已出租":""}
-                    ${b[0].bstatus==3?"已出售":""}
+                    ${b[0].bstatus==3?"已出售(已赔偿)":""}
                 </td>
                 <td>${b[0].bindate.toString().substring(0,10)}</td>
                 <td>
