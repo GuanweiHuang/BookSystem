@@ -91,7 +91,7 @@
 </body>
 <script type="text/javascript">
 
-    javascript :window.history.forward(1);
+
 
 //    jQuery(document).ready(function ($) {
 //        if (window.history && window.history.pushState) {

@@ -25,6 +25,26 @@ public class ReaderAction {
     private int[] id;
     private List readersList;
 
+
+    //查询全部读者
+    public String findReadersList(){
+        ActionContext.getContext().put("readersList",readerService.findReadersList());
+        return "findReadersList";
+    }
+
+    //模糊查询全部读者
+    public String findReaderVague(){
+        ActionContext.getContext().put("readersList",readerService.findReaderVague(readers));
+        return "findReadersList";
+    }
+
+    //模糊查询全部读者
+    public String findReaderVagueDate(){
+        ActionContext.getContext().put("readersList",readerService.findReaderVagueDate(readers));
+        return "findReadersList";
+    }
+
+
     //增
     public String addReader(){
         if (readerService.addReader(readers)){
@@ -78,39 +98,39 @@ public class ReaderAction {
     }
 
     //查询
-    public String findReadersList(){
+    public String findReadersDo(){
         ActionContext.getContext().put("readersList",readerService.findReadersList());
-        return "findReadersList";
+        return "findReadersDo";
     }
 
     //模糊查询
-    public String findReaderVague(){
+    public String findReaderDoVague(){
         ActionContext.getContext().put("readersList",readerService.findReaderVague(readers));
-        return "findReadersList";
+        return "findReadersDo";
     }
 
     //模糊查询
-    public String findReaderVagueDate(){
+    public String findReaderDoVagueDate(){
         ActionContext.getContext().put("readersList",readerService.findReaderVagueDate(readers));
-        return "findReadersList";
+        return "findReadersDo";
     }
 
     //异步查询
-    public String findReadersList2(){
+    public String findReadersDo2(){
         readersList=readerService.findReadersList();
-        return "findReadersList2";
+        return "findReadersDo2";
     }
 
     //模糊查询
-    public String findReaderVague2(){
+    public String findReaderDoVague2(){
         readersList=readerService.findReaderVague(readers);
-        return "findReaderVague2";
+        return "findReaderDoVague2";
     }
 
     //模糊查询
-    public String findReaderVagueDate2(){
+    public String findReaderDoVagueDate2(){
         readersList=readerService.findReaderVagueDate(readers);
-        return "findReaderVague2";
+        return "findReaderDoVague2";
     }
 
     //管理员或普通员工去到修改页面

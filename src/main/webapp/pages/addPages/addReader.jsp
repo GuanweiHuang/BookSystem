@@ -179,18 +179,6 @@
             if ($(":checkbox:checked").length==0){
                 $("#tip_rbehavior").html("<span style='color: red;'>请选择读者的操作</span>");
                 event.preventDefault();
-            }else if (idstr=='买书'){
-                $("#tip_rname").html("<span style='color: #1c94c4;'>姓名可以为空</span>");
-                $("#tip_idcard").html("<span style='color:#1c94c4;'>身份证号码可以为空</span>");
-                $("#tip_rtel").html("<span style='color:#1c94c4'>电话可以为空</span>");
-                if (!reg_time.test(rdotime)){
-                    $("#tip_rdotime").html("<span style='color: red'>格式为yyyy-mm-dd</span>");
-                    event.preventDefault();
-                }
-                if (remarks==null||remarks==""){
-                    $("#tip_remarks").html("<span style='color: red'>请输入读者的操作</span>");
-                    event.preventDefault();
-                }
             }else {
                 if (rname==null||rname==""){
                     $("#tip_rname").html("<span style='color: red;'>姓名不能为空</span>");
@@ -216,12 +204,6 @@
                     $("#tip_remarks").html("<span style='color: red'>请输入读者的操作</span>");
                     event.preventDefault();
                 }
-            }
-
-            if(idstr=='买书'&&!(!reg_time.test(rdotime))&&(remarks!=null||remarks!="")){
-                $("input[name='readers.rname']").val("(空)");
-                $("input[name='readers.idcard']").val("(空)");
-                $("input[name='readers.rtel']").val("(空)");
             }
         });
 

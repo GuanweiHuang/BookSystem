@@ -109,22 +109,24 @@
         <action name="readerAction_*" method="{1}" class="readerAction">
             <result name="addReader" type="redirect">/pages/addPages/addReader.jsp?msg=${msg}</result>
 
+            <result name="findReadersDo">/pages/showPages/readersDo.jsp</result>
+
             <result name="findReadersList">/pages/showPages/readersList.jsp</result>
 
             <result name="toUpdateReader">/pages/updatePages/updateReader.jsp</result>
-            <result name="updateReader" type="redirect">readerAction_findReadersList?msg=${msg}&amp;&amp;rno=${rno}</result>
+            <result name="updateReader" type="redirect">readerAction_findReadersDo?msg=${msg}&amp;&amp;rno=${rno}</result>
 
-            <result name="deleteReader"  type="redirect">readerAction_findReadersList?msg=${msg}</result>
+            <result name="deleteReader"  type="redirect">readerAction_findReadersDo?msg=${msg}</result>
 
-            <result name="findReadersList2" type="json">
+            <result name="findReadersDo2" type="json">
                 <param name="includeProperties">readersList.*</param>
             </result>
-            <result name="findReaderVague2" type="json">
+            <result name="findReaderDoVague2" type="json">
                 <param name="includeProperties">readersList.*</param>
             </result>
 
             <result name="toUpdateReader2">/pages/updatePages/updateReader2.jsp</result>
-            <result name="updateReader2" type="redirect">/pages/showPages/readersList2.jsp?msg=${msg}&amp;&amp;rno=${rno}</result>
+            <result name="updateReader2" type="redirect">/pages/showPages/readersDo2.jsp?msg=${msg}&amp;&amp;rno=${rno}</result>
 
 
             <interceptor-ref name="myLoginStack" />

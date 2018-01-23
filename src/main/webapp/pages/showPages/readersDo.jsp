@@ -129,12 +129,12 @@
     </script>
 </s:elseif>
 
-    <s:form action="readerAction_findReaderVague" method="POST">
+    <s:form action="readerAction_findReaderDoVague" method="POST">
         查询：<s:textfield name="readers.rname"/>
         <s:submit value="确定"/>(无法查询日期)
     </s:form>
 
-    <s:form action="readerAction_findReaderVagueDate" method="POST">
+    <s:form action="readerAction_findReaderDoVagueDate" method="POST">
         查询：<s:textfield name="readers.rname" id="VagueDate"/>
         <s:submit value="确定" onclick="sVagueDate()"/>(不能查询中文)
     </s:form>
@@ -142,27 +142,63 @@
     <h2>读者信息列表</h2>
     <table border="1" style="min-width: 600px">
         <tr>
+            <td><a href="javascript:selectAll()">全选/反选</a></td>
             <td>编号</td>
             <td>读者姓名</td>
             <td>读者身份证号码</td>
             <td>读者电话</td>
             <td>录入时间</td>
+            <td>读者操作</td>
+            <td>备注</td>
+            <td>管理</td>
         </tr>
         <s:iterator value="#request.readersList" var="r" status="ids">
             <s:if test="#request.readersList == null || #request.readersList == ''">
                 <tr><td colspan="6" style="color: red">没有任何数据</td></tr>
             </s:if>
             <tr>
+                <td><input type="checkbox" name="id" value="${r.rno}"></td>
                 <td>${ids.count}</td>
                 <td>${r.rname}</td>
                 <td>${r.idcard}</td>
                 <td>${r.rtel}</td>
                 <td>${r.rdotime.toString().substring(0,10)}</td>
+                <td>${r.rbehavior}</td>
+                <td style="max-width: 260px;">${r.remarks}</td>
+                <td>
+                    <input type="hidden" value="${rno}"/>
+                    <a href="${pageContext.request.contextPath}/readerAction_toUpdateReader?readers.rno=${r.rno}">修改</a>&nbsp;|&nbsp;
+                    <a href="javascript:;" onclick="deleteReader(this)">删除</a>
+                </td>
             </tr>
         </s:iterator>
     </table>
+<a href="javascript:deleteAllReaders()">删除所选读者信息</a>
 </body>
 <script type="text/javascript">
+
+    function selectAll(){
+        if ($(":checkbox:checked").length>0){
+            $(":checkbox").prop("checked",false);
+        }else {
+            $(":checkbox").prop("checked",true);
+        }
+    }
+
+    function deleteAllReaders(){
+        var ids=$(":checkbox:checked");
+        if (ids.length==0){
+            alert("请选择要删除的读者信息");
+        }else {
+            var param = $(":checkbox").serialize();
+            if(confirm('你确定要删除这些读者信息吗？')){
+                location.href='readerAction_deleteAllReader?'+param;
+                return true;
+            }else {
+                return false;
+            }
+        }
+    }
 
     function deleteReader(ob) {
         var $val=$(ob).parent().find("input");

@@ -95,6 +95,10 @@
                     </font>
                 </p>
 
+                <p style="font-family:微软雅黑;font-size: 20px;color:White">
+                    Tip:所有出售(买书)均为书籍损坏的赔偿
+                </p>
+
             </div>
         </div>
     </div>
@@ -113,8 +117,6 @@
 </body>
 
 <script type="text/javascript">
-
-    javascript :window.history.forward(0);
 
     var _menus = {"menus":[
         <s:if test="#session.LoginUser.utype==1">
@@ -147,11 +149,12 @@
             ]
         },{"menuid":"56","icon":"icon-sys","menuname":"&nbsp;读者设置",
                 "menus":[
-                <s:if test="#session.LoginUser.utype==1">
                     {"menuname":"查询读者","icon":"icon-nav","url":"${pageContext.request.contextPath}/readerAction_findReadersList"},
+                <s:if test="#session.LoginUser.utype==1">
+                    {"menuname":"读者行为","icon":"icon-nav","url":"${pageContext.request.contextPath}/readerAction_findReadersDo"},
                 </s:if>
                 <s:elseif test="#session.LoginUser.utype!=1">
-                    {"menuname":"查询读者","icon":"icon-nav","url":"${pageContext.request.contextPath}/pages/showPages/readersList2.jsp"},
+                    {"menuname":"读者行为","icon":"icon-nav","url":"${pageContext.request.contextPath}/pages/showPages/readersDo2.jsp"},
                 </s:elseif>
                     {"menuname":"添加读者","icon":"icon-nav","url":"${pageContext.request.contextPath}/pages/addPages/addReader.jsp"}
                 ]
@@ -208,6 +211,9 @@
         }
         return i;
     }
+
+
+    javascript :window.history.forward(0);
 </script>
 
 </html>
